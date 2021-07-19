@@ -32,31 +32,28 @@ export default function Home() {
             escritores
           </code>.
         </p>
-        {products.map(product => {
-  const { id, title, image, category, price } = product;
+        {products.map(row => {
+  // const { id, title, image, category, price } = row;
   return (
-
- 
 
         <div className="flex flex-wrap items-center justify-center pt-10">
           <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
-
             <div className="relative pt-10 px-10 flex items-center justify-center">
-              <div key={id} className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+              <div key={row[0].id} className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
               </div>
               <picture>
                 <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
                 <source srcSet="/images/harrypotter1.jpeg" />
-                <img className="relative w-40" src="/images/harrypotter1.jpeg" alt="shopping item" />
+                <img className="relative w-40" src={row[0].image} alt="shopping item" />
               </picture>
             </div>
             <div className="relative text-white px-6 pb-6 mt-6">
             <span className="block opacity-75 -mb-1">
-            { category }
+            { row[0].category }
               </span>
               <div className="flex justify-between">
                 <span className="block font-main text-xl">
-                { title }
+                { row[0].title }
                 </span>
                 <button className="bg-white rounded-full text-red-200 text-xs font-bold px-3 py-2 leading-none flex items-center hover:text-red-400" onClick={
                   () => {
@@ -70,7 +67,7 @@ export default function Home() {
                     });
                   }
                 }>
-                  $36.00
+                  {row[0].price} €
                 </button>
               </div>
             </div>
@@ -79,18 +76,18 @@ export default function Home() {
             <div className="relative pt-10 px-10 flex items-center justify-center">
               <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
               </div>
-              <img className="relative w-40" src="/images/harrypotter2.jpeg" alt="shopping" />
+              <img className="relative w-40" src={row[1].image} alt="shopping" />
             </div>
             <div className="relative text-white px-6 pb-6 mt-6">
               <span className="block opacity-75 -mb-1">
-                Outdoor
+              {row[1].category}
               </span>
               <div className="flex justify-between">
                 <span className="block font-main text-xl">
-                  Monstera
+                {row[1].title}
                 </span>
                 <span className="bg-white rounded-full text-red-400 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                  $45.00
+                {row[1].price} €
                 </span>
               </div>
             </div>
@@ -99,18 +96,18 @@ export default function Home() {
             <div className="relative pt-10 px-10 flex items-center justify-center">
               <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
               </div>
-              <img className="relative w-40" src="/images/harrypotter3.jpeg" alt="shopping" />
+              <img className="relative w-40" src={row[2].image} alt="shopping" />
             </div>
             <div className="relative text-white px-6 pb-6 mt-6">
               <span className="block opacity-75 -mb-1">
-                Outdoor
+              {row[2].category}
               </span>
               <div className="flex justify-between">
                 <span className="block font-main text-xl">
-                  Oak Tree
+                {row[2].title}
                 </span>
                 <span className="bg-white rounded-full text-red-300 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                  $68.50
+                {row[1].price} €
                 </span>
               </div>
             </div>
