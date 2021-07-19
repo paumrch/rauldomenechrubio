@@ -20,7 +20,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
         <h1 className="text-6xl font-main">
-          Bienvenido a{' '}
+          Welcome to{' '}
           <a className="text-red-300" href="https://nextjs.org">
             Cremona
           </a>
