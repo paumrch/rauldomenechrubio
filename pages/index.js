@@ -1,82 +1,128 @@
 import Head from 'next/head'
+import Header from './nav'
+import Footer from './footer'
+import products from '../products.json';
+import { initiateCheckout } from '../lib/payments';
+import Stripe from '@stripe/stripe-js';
+
 
 export default function Home() {
+
+  console.log('NEXT_PUBLIC_STRIPE_API_KEY', process.env.NEXT_PUBLIC_STRIPE_API_KEY)
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col bg-red-50 justify-center min-h-screen">
       <Head>
-        <title>Create Next App</title>
+        <title>Books</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
+      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
+        <h1 className="text-6xl font-main">
+          Bienvenido a{' '}
+          <a className="text-red-300" href="https://nextjs.org">
+            Cremona
           </a>
         </h1>
 
         <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
+          La librería de los jóvenes {' '}
+          <code className="p-3 font-main text-lg bg-red-100 rounded-md">
+            escritores
+          </code>.
         </p>
+        {products.map(product => {
+  const { id, title, image, category, price } = product;
+  return (
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+ 
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+        <div className="flex flex-wrap items-center justify-center pt-10">
+          <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            <div className="relative pt-10 px-10 flex items-center justify-center">
+              <div key={id} className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+              </div>
+              <picture>
+                <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
+                <source srcSet="/images/harrypotter1.jpeg" />
+                <img className="relative w-40" src="/images/harrypotter1.jpeg" alt="shopping item" />
+              </picture>
+            </div>
+            <div className="relative text-white px-6 pb-6 mt-6">
+            <span className="block opacity-75 -mb-1">
+            { category }
+              </span>
+              <div className="flex justify-between">
+                <span className="block font-main text-xl">
+                { title }
+                </span>
+                <button className="bg-white rounded-full text-red-200 text-xs font-bold px-3 py-2 leading-none flex items-center hover:text-red-400" onClick={
+                  () => {
+                    initiateCheckout({
+                      lineItems: [
+                        {
+                          price: id,
+                          quantity: 1
+                        }
+                      ]
+                    });
+                  }
+                }>
+                  $36.00
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
+            <div className="relative pt-10 px-10 flex items-center justify-center">
+              <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+              </div>
+              <img className="relative w-40" src="/images/harrypotter2.jpeg" alt="shopping" />
+            </div>
+            <div className="relative text-white px-6 pb-6 mt-6">
+              <span className="block opacity-75 -mb-1">
+                Outdoor
+              </span>
+              <div className="flex justify-between">
+                <span className="block font-main text-xl">
+                  Monstera
+                </span>
+                <span className="bg-white rounded-full text-red-400 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                  $45.00
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
+            <div className="relative pt-10 px-10 flex items-center justify-center">
+              <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+              </div>
+              <img className="relative w-40" src="/images/harrypotter3.jpeg" alt="shopping" />
+            </div>
+            <div className="relative text-white px-6 pb-6 mt-6">
+              <span className="block opacity-75 -mb-1">
+                Outdoor
+              </span>
+              <div className="flex justify-between">
+                <span className="block font-main text-xl">
+                  Oak Tree
+                </span>
+                <span className="bg-white rounded-full text-red-300 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                  $68.50
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+
+)
+})}
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      <Footer />
+
     </div>
   )
 }
