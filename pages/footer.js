@@ -59,7 +59,7 @@ export default function Footer() {
             </a>
         </div>
         <div className="text-center text-red-300  pt-10 sm:pt-12 font-light flex items-center justify-center">
-            <p className="font-medium">Desarrollado por <span className="hover:underline">Maverick</span>.</p>
+            <p className="font-medium">Desarrollado por <span className="hover:underline">Pau</span>.</p>
         </div>
     </div>
 </footer>

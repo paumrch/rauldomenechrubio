@@ -20,26 +20,26 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
         <h1 className="text-6xl font-main">
-          Hola a {' '}
+         Bienvenido a {' '}
           <a className="text-red-300" href="https://nextjs.org">
             Cremona
           </a>
         </h1>
 
         <p className="mt-3 text-2xl">
-          La librería de los jóvenes {' '}
+          La casa de los jóvenes {' '}
           <code className="p-3 font-main text-lg bg-red-100 rounded-md">
             escritores
           </code>.
         </p>
         {products.map(row => {
-  // const { id, title, image, category, price } = row;
+  //const { id, title, image, category, price } = row;
   return (
 
         <div className="flex flex-wrap items-center justify-center pt-10">
           <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
             <div className="relative pt-10 px-10 flex items-center justify-center">
-              <div key={row[0].id} className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+              <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
               </div>
               <picture>
                 <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
@@ -55,19 +55,19 @@ export default function Home() {
                 <span className="block font-main text-xl">
                 { row[0].title }
                 </span>
-                <button className="bg-white rounded-full text-red-200 text-xs font-bold px-3 py-2 leading-none flex items-center hover:text-red-400" onClick={
+                <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={
                   () => {
                     initiateCheckout({
                       lineItems: [
                         {
-                          price: id,
+                          price: row[0].id,
                           quantity: 1
                         }
                       ]
                     });
                   }
                 }>
-                  {row[0].price} €
+                  {row[0].price}€
                 </button>
               </div>
             </div>
@@ -86,9 +86,20 @@ export default function Home() {
                 <span className="block font-main text-xl">
                 {row[1].title}
                 </span>
-                <span className="bg-white rounded-full text-red-400 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                {row[1].price} €
-                </span>
+                <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={
+                  () => {
+                    initiateCheckout({
+                      lineItems: [
+                        {
+                          price: row[1].id,
+                          quantity: 1
+                        }
+                      ]
+                    });
+                  }
+                }>
+                  {row[1].price}€
+                </button>
               </div>
             </div>
           </div>
@@ -106,9 +117,20 @@ export default function Home() {
                 <span className="block font-main text-xl">
                 {row[2].title}
                 </span>
-                <span className="bg-white rounded-full text-red-300 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                {row[1].price} €
-                </span>
+                <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={
+                  () => {
+                    initiateCheckout({
+                      lineItems: [
+                        {
+                          price: row[2].id,
+                          quantity: 1
+                        }
+                      ]
+                    });
+                  }
+                }>
+                  {row[2].price}€
+                </button>
               </div>
             </div>
           </div>

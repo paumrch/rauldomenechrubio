@@ -1,21 +1,21 @@
 [
   [
   {
-    "id": "prod_JrD4morgVOlqFR",
+    "id": "price_1JDUeIIpi9NgmDuQlNYIwAlP",
     "title": "Harry Potter 1",
     "category": "Cuento",
     "image": "/images/harrypotter1.jpeg",
     "price": 20.99
   },
   {
-    "id": "prod_JrD4Tx22spUtST",
+    "id": "price_1JDUe4Ipi9NgmDuQh9nA4B9E",
     "title": "Harry Potter 2",
     "category": "Novela",
     "image": "/images/harrypotter2.jpeg",
     "price": 10.99
   },
   {
-    "id": "prod_JrD34zGixQvUb4",
+    "id": "price_1JDUdqIpi9NgmDuQGOQO9HGj",
     "title": "Harry Potter 3",
     "category": "Ensayo",
     "image": "/images/harrypotter3.jpeg",
