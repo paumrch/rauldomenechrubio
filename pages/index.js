@@ -18,9 +18,9 @@ export default function Home() {
 
   console.log('cart', cart);
 
-  function addToCart({id} = {}) {
+  function addToCart({ id } = {}) {
     updateCart(prev => {
-      let cartState = {...prev};
+      let cartState = { ...prev };
 
       if (cartState.products[id]) {
         cartState.products[id].quantity = cartState.products[id].quantity + 1;
@@ -43,6 +43,45 @@ export default function Home() {
       <Head>
         <title>Books</title>
         <link rel="icon" href="/favicon.ico" />
+
+        <link
+          rel="preload"
+          href="/fonts/Recoleta-Black.woff"
+          as="font"
+          crossOrigin=""
+        />
+
+        <link
+          rel="preload"
+          href="/fonts/Recoleta-Bold.woff"
+          as="font"
+          crossOrigin=""
+        />
+
+        <link
+          rel="preload"
+          href="/fonts/Recoleta-Medium.woff"
+          as="font"
+          crossOrigin=""
+        />
+
+<link
+          rel="preload"
+          href="/fonts/Recoleta-Regular.woff"
+          as="font"
+          crossOrigin=""
+        />
+
+        <link
+          rel="preload"
+          href="/fonts/Recoleta-Light.woff"
+          as="font"
+          crossOrigin=""
+        />
+
+
+
+
       </Head>
       <Header />
 
@@ -95,7 +134,7 @@ export default function Home() {
                     <span className="block font-main font-bold text-xl">
                       {row[0].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id:row[0].id})}>
+                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[0].id })}>
                       {row[0].price}€
                     </button>
                   </div>
@@ -127,7 +166,7 @@ export default function Home() {
                   </div>
                   <img className="relative w-40" src={row[2].image} alt="shopping" />
                 </div>
-              
+
                 <div className="relative text-white px-6 pb-6 mt-6">
                   <span className="block opacity-75 -mb-1">
                     {row[2].category}
