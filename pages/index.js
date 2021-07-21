@@ -86,7 +86,7 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
-        <h1 className="text-6xl font-serif font-regular sm:font-serif">
+        <h1 className="text-6xl font-carena font-regular sm:font-serif">
           Hola a {' '}
           <a className="text-red-300" href="/">
             Cremona
@@ -95,7 +95,7 @@ export default function Home() {
 
         <p className="mt-3 text-2xl">
           La casa de los jóvenes {' '}
-          <code className="p-3 font-serif font-regular sm:font-serif text-lg bg-red-100 rounded-md">
+          <code className="p-3 font-carena font-regular sm:font-serif text-lg bg-red-100 rounded-md">
             escritores
           </code>.
         </p>
