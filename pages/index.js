@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Header from './nav'
 import { Navbar } from '../components/Navbar'
 import Footer from './footer'
 import products from '../products.json';
@@ -17,7 +16,15 @@ export default function Home() {
 
   const [cart, updateCart] = useState(defaultCart);
 
-  console.log('cart', cart);
+  const cartItems = Object.keys(cart.products).map(id => {
+    const product = products.find(({ id }) => `${id}`);
+    return {
+      ...cart.products[id],
+      pricePerItem: product.price
+    }
+  })
+  
+  console.log('cartItems', cartItems)
 
   function addToCart({ id } = {}) {
     updateCart(prev => {
@@ -30,13 +37,23 @@ export default function Home() {
           id,
           quantity: 1
         }
+      }
 
         return cartState;
 
-      }
     })
   }
 
+  // function checkout() {
+  //   initiateCheckout({
+  //     lineItems: cartItems.map(({ id, quantity }) => {
+  //       return {
+  //         price: id,
+  //         quantity
+  //       }
+  //     })
+  //   })
+  // }
 
 
   return (
@@ -64,15 +81,17 @@ export default function Home() {
           </code>.
         </p>
 
-        {/* <p className="">
+        <p className="">
 
-          <strong>Items:</strong> {quantity}
+          <strong>Items:</strong> 
+          {/* {quantity} */}
           <br />
-          <strong>Total:</strong> ${subtotal}
+          <strong>Total:</strong> 
+          {/* ${subtotal} */}
 
           <br />
-          <button className="" onClick={checkout}>Check Out</button>
-        </p> */}
+          {/* <button className="" onClick={checkout}>Check Out</button> */}
+        </p>
 
 
         {products.map(row => {
@@ -80,7 +99,7 @@ export default function Home() {
           return (
 
             <div className="flex flex-wrap items-center justify-center pt-10">
-              <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
+              <div key={id} className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
@@ -104,7 +123,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
+              <div key={id} className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
@@ -118,13 +137,13 @@ export default function Home() {
                     <span className="block font-recoleta font-regular text-xl">
                       {row[1].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[1].id)}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[1].id })}>
                       {row[1].price}€
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
+              <div key={id} className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
@@ -139,7 +158,7 @@ export default function Home() {
                     <span className="block font-recoleta font-regular text-xl">
                       {row[2].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[2].id)}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[2].id })}>
                       {row[2].price}€
                     </button>
                   </div>
