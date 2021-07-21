@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from './nav'
+import { Navbar } from '../components/Navbar'
 import Footer from './footer'
 import products from '../products.json';
 import { initiateCheckout } from '../lib/payments';
@@ -44,20 +45,22 @@ export default function Home() {
         <title>Books</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Navbar />
+      {/* <Header /> */}
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
         <h1 className="text-6xl font-recoleta font-regular">
-          Hola a {' '}
-          <a className="text-red-300" href="/">
-            Cremona
+          Bienvenido, {' '}
+          <a className="text-red-400" href="/">
+            escritor
           </a>
+          
         </h1>
 
         <p className="mt-3 text-2xl">
-          La casa de los jóvenes {' '}
+          Estás en tu {' '}
           <code className="p-3 font-recoleta font-regular text-lg bg-red-100 rounded-md">
-            escritores
+            casa
           </code>.
         </p>
 
@@ -92,10 +95,10 @@ export default function Home() {
                     {row[0].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-recoleta font-bold text-xl">
+                    <span className="block font-recoleta font-regular text-xl">
                       {row[0].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[0].id })}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[0].id })}>
                       {row[0].price}€
                     </button>
                   </div>
@@ -112,10 +115,10 @@ export default function Home() {
                     {row[1].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-recoleta font-bold text-xl">
+                    <span className="block font-recoleta font-regular text-xl">
                       {row[1].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[1].id)}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[1].id)}>
                       {row[1].price}€
                     </button>
                   </div>
@@ -133,15 +136,12 @@ export default function Home() {
                     {row[2].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-recoleta font-bold text-xl">
+                    <span className="block font-recoleta font-regular text-xl">
                       {row[2].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[2].id)}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[2].id)}>
                       {row[2].price}€
                     </button>
-                    {/* <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[2].id)}>
-                      {row[2].price}€
-                    </button> */}
                   </div>
                 </div>
               </div>

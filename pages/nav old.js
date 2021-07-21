@@ -1,19 +1,21 @@
-export default function Header() {
+
+
+export default function Header1() {
   return (
     
-<div className="pb-24">
+<div className="pb-12">
     <nav className="bg-red-50">
         <div className="max-w-7xl mx-auto px-8">
             <div className="flex items-center justify-between h-16">
                 <div className="w-full justify-between flex items-center">
-                    <a className="flex-shrink-0 font-recoleta text-red-300 text-lg" href="/">
+                    <a className="flex-shrink-0 font-recoleta text-red-400 text-3xl" href="/">
                         Cremona
                         {/* <img className="h-6" src="/cremona.svg" alt="Cremona"/> */}
                     </a>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                             <a className="text-red-400  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Home
+                                Homee
                             </a>
                             <a className="text-red-400 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
                                 Gallery
