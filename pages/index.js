@@ -86,7 +86,7 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
-        <h1 className="text-6xl font-serif font-bold sm:font-serif">
+        <h1 className="text-6xl font-serif font-regular sm:font-serif">
           Hola a {' '}
           <a className="text-red-300" href="/">
             Cremona
