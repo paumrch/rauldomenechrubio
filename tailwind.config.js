@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        main: ['Recoleta'],
+        main: ['Recoleta', 'serif'],
       },
     },
   },
