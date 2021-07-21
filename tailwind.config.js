@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Recoleta', 'serif'],
+        serif: ['Carena-Regular', 'serif'],
       },
     },
   },
