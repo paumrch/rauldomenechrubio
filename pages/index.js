@@ -48,7 +48,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
         <h1 className="text-6xl font-main">
-          Bienvenido a {' '}
+          Hola a {' '}
           <a className="text-red-300" href="/">
             Cremona
           </a>
