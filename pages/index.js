@@ -17,7 +17,7 @@ export default function Home() {
   const [cart, updateCart] = useState(defaultCart);
 
   const cartItems = Object.keys(cart.products).map(id => {
-    const product = products.find(({ id }) => `${id}`);
+    const product = products[id]
     return {
       ...cart.products[id],
       pricePerItem: product.price
