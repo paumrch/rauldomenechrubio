@@ -47,7 +47,7 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
-        <h1 className="text-6xl font-main">
+        <h1 className="text-6xl font-main-bold">
           Hola a {' '}
           <a className="text-red-300" href="/">
             Cremona
@@ -56,7 +56,7 @@ export default function Home() {
 
         <p className="mt-3 text-2xl">
           La casa de los jóvenes {' '}
-          <code className="p-3 font-main text-lg bg-red-100 rounded-md">
+          <code className="p-3 font-main-bold text-lg bg-red-100 rounded-md">
             escritores
           </code>.
         </p>
@@ -92,7 +92,7 @@ export default function Home() {
                     {row[0].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-main text-xl">
+                    <span className="block font-main-bold text-xl">
                       {row[0].title}
                     </span>
                     <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id:row[0].id})}>
@@ -112,7 +112,7 @@ export default function Home() {
                     {row[1].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-main text-xl">
+                    <span className="block font-main-bold text-xl">
                       {row[1].title}
                     </span>
                     <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[1].id)}>
@@ -133,7 +133,7 @@ export default function Home() {
                     {row[2].category}
                   </span>
                   <div className="flex justify-between">
-                    <span className="block font-main text-xl">
+                    <span className="block font-main-bold text-xl">
                       {row[2].title}
                     </span>
                     <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[2].id)}>
