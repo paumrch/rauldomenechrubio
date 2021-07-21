@@ -46,35 +46,35 @@ export default function Home() {
 
         <link
           rel="preload"
-          href="/fonts/Recoleta-Black.woff"
+          href="/fonts/Recoleta-Black.woff2"
           as="font"
           crossOrigin=""
         />
 
         <link
           rel="preload"
-          href="/fonts/Recoleta-Bold.woff"
+          href="/fonts/Recoleta-Bold.woff2"
           as="font"
           crossOrigin=""
         />
 
         <link
           rel="preload"
-          href="/fonts/Recoleta-Medium.woff"
+          href="/fonts/Recoleta-Medium.woff2"
           as="font"
           crossOrigin=""
         />
 
 <link
           rel="preload"
-          href="/fonts/Recoleta-Regular.woff"
+          href="/fonts/Recoleta-Regular.woff2"
           as="font"
           crossOrigin=""
         />
 
         <link
           rel="preload"
-          href="/fonts/Recoleta-Light.woff"
+          href="/fonts/Recoleta-Light.woff2"
           as="font"
           crossOrigin=""
         />
