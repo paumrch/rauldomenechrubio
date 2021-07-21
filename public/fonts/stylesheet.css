@@ -6,8 +6,8 @@
 @layer base {
 
     @font-face {
-        font-family: 'Carena-Regular';
-        src: url('/Carena-Regular.woff') format('woff');
+        font-family: 'Carena';
+        src: url('/fonts/Carena-Regular.woff') format('woff');
         font-weight: 300;
         font-style: normal;
         font-display: swap;
