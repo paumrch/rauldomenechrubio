@@ -2,7 +2,8 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+
+@layer base {
 
     @font-face {
         font-family: 'Recoleta';
@@ -51,6 +52,9 @@
         font-style: normal;
         font-display: swap;
     }
+}
+
+@tailwind utilities;
 
 
 
