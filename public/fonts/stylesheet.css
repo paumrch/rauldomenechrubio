@@ -7,7 +7,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-Black.woff') format('woff');
-    src: url('Recoleta-Black.ttf') format('ttf');
+    src: url('Recoleta-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-Light.woff') format('woff');
-    src: url('Recoleta-Light.ttf') format('ttf');
+    src: url('Recoleta-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -25,7 +25,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-Regular.woff') format('woff');
-    src: url('Recoleta-Regular.ttf') format('ttf');
+    src: url('Recoleta-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -34,7 +34,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-SemiBold.woff') format('woff');
-    src: url('Recoleta-SemiBold.ttf') format('ttf');
+    src: url('Recoleta-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -43,7 +43,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-Bold.woff') format('woff');
-    src: url('Recoleta-Bold.ttf') format('ttf');
+    src: url('Recoleta-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -52,7 +52,7 @@
 @font-face {
     font-family: 'Recoleta';
     src: url('Recoleta-Medium.woff') format('woff');
-    src: url('Recoleta-Medium.ttf') format('ttf');
+    src: url('Recoleta-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
