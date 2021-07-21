@@ -95,7 +95,7 @@ export default function Home() {
                     <span className="block font-main text-xl">
                       {row[0].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart(row[0].id)}>
+                    <button className="bg-white rounded-full text-red-200 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id:row[0].id})}>
                       {row[0].price}€
                     </button>
                   </div>
