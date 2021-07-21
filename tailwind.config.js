@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        main: ['Playfair Display', 'display'],
+        main: ['Recoleta'],
       },
     },
   },
