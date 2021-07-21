@@ -7,7 +7,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Glorine', 'sans-serif'],
+                recoleta: ['Recoleta', 'sans-serif'],
             },
         },
     },
