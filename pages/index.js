@@ -17,7 +17,7 @@ export default function Home() {
   const [cart, updateCart] = useState(defaultCart);
 
   const cartItems = Object.keys(cart.products).map(id => {
-    const product = products.find(({ id }) => `${id}`);
+    const product = products.flat()[id];
     return {
       ...cart.products[id],
       pricePerItem: product.price
@@ -30,10 +30,10 @@ export default function Home() {
     updateCart(prev => {
       let cartState = { ...prev };
 
-      if (cartState.products[id]) {
-        cartState.products[id].quantity = cartState.products[id].quantity + 1;
+      if ( cart.products[id] ) {
+        cart.products[id].quantity = cart.products[id].quantity + 1;
       } else {
-        cartState.products[id] = {
+        cart.products[id] = {
           id,
           quantity: 1
         }
@@ -94,76 +94,81 @@ export default function Home() {
         </p>
 
 
-        {products.map(row => {
-          const { id, title, image, category, price } = row;
+        {products.map(product => {
+          const { id, title, image, category, price } = product;
           return (
 
             <div className="flex flex-wrap items-center justify-center pt-10">
-              <div key={id} className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
+              
+              <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
                   <picture>
                     <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
                     <source srcSet="/images/harrypotter1.jpeg" />
-                    <img className="relative w-40" src={row[0].image} alt="shopping item" />
+                    <img className="relative w-40" src={product[0].image} alt="shopping item" />
                   </picture>
                 </div>
                 <div className="relative text-white px-6 pb-6 mt-6">
                   <span className="block opacity-75 -mb-1">
-                    {row[0].category}
+                    {product[0].category}
                   </span>
                   <div className="flex justify-between">
                     <span className="block font-recoleta font-regular text-xl">
-                      {row[0].title}
+                      {product[0].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[0].id })}>
-                      {row[0].price}€
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[0].id })}>
+                      20€
                     </button>
                   </div>
                 </div>
               </div>
-              <div key={id} className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
+              
+              
+              <div className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
-                  <img className="relative w-40" src={row[1].image} alt="shopping" />
+                  <img className="relative w-40" src={product[1].image} alt="shopping" />
                 </div>
                 <div className="relative text-white px-6 pb-6 mt-6">
                   <span className="block opacity-75 -mb-1">
-                    {row[1].category}
+                    {product[1].category}
                   </span>
                   <div className="flex justify-between">
                     <span className="block font-recoleta font-regular text-xl">
-                      {row[1].title}
+                      {product[1].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[1].id })}>
-                      {row[1].price}€
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[1].id })}>
+                      {product[1].price}€
                     </button>
                   </div>
                 </div>
               </div>
-              <div key={id} className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
+              
+              <div className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
-                  <img className="relative w-40" src={row[2].image} alt="shopping" />
+                  <img className="relative w-40" src={product[2].image} alt="shopping" />
                 </div>
 
                 <div className="relative text-white px-6 pb-6 mt-6">
                   <span className="block opacity-75 -mb-1">
-                    {row[2].category}
+                    {product[2].category}
                   </span>
                   <div className="flex justify-between">
                     <span className="block font-recoleta font-regular text-xl">
-                      {row[2].title}
+                      {product[2].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: row[2].id })}>
-                      {row[2].price}€
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[2].id })}>
+                      {product[2].price}€
                     </button>
                   </div>
                 </div>
               </div>
+              
             </div>
 
           )
