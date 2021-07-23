@@ -17,14 +17,21 @@ export default function Home() {
   const [cart, updateCart] = useState(defaultCart);
 
   const cartItems = Object.keys(cart.products).map(id => {
-    const product = products.flat()[id];
+    const product = products.flat().find(e => e.id === id)
+    
+    console.log(product)
+
     return {
       ...cart.products[id],
       pricePerItem: product.price
     }
   })
-  
-  console.log('cartItems', cartItems)
+
+  const subtotal = cartItems.reduce((accumulator, { pricePerUnit, quantity }) => {
+    return accumulator + ( pricePerUnit * quantity );
+  }, 0);
+
+  console.log('subtotal', subtotal);
 
   function addToCart({ id } = {}) {
     updateCart(prev => {
@@ -83,11 +90,11 @@ export default function Home() {
 
         <p className="">
 
-          <strong>Items:</strong> 
-          {/* {quantity} */}
+          {/* <strong>Items:</strong> 
+          {quantity}
           <br />
           <strong>Total:</strong> 
-          {/* ${subtotal} */}
+          ${subtotal} */}
 
           <br />
           {/* <button className="" onClick={checkout}>Check Out</button> */}
@@ -118,8 +125,8 @@ export default function Home() {
                     <span className="block font-recoleta font-regular text-xl">
                       {product[0].title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[0].id })}>
-                      20€
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product[0].id})}>
+                    {product[0].price}
                     </button>
                   </div>
                 </div>
