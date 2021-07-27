@@ -1,67 +1,16 @@
 import Head from 'next/head'
-import { Navbar } from '../components/Navbar'
 import Footer from './footer'
 import products from '../products.json';
-import { initiateCheckout } from '../lib/payments';
 import { useState } from 'react';
+import { useCart } from '../hooks/use-cart';
 import Stripe from '@stripe/stripe-js';
 
 
-const defaultCart = {
-  products: {}
-}
 
 
 export default function Home() {
 
-  const [cart, updateCart] = useState(defaultCart);
-
-  const cartItems = Object.keys(cart.products).map(id => {
-    const product = products.flat().find(e => e.id === id)
-    
-    console.log(product)
-
-    return {
-      ...cart.products[id],
-      pricePerItem: product.price
-    }
-  })
-
-  const subtotal = cartItems.reduce((accumulator, { pricePerUnit, quantity }) => {
-    return accumulator + ( pricePerUnit * quantity );
-  }, 0);
-
-  console.log('subtotal', subtotal);
-
-  function addToCart({ id } = {}) {
-    updateCart(prev => {
-      let cartState = { ...prev };
-
-      if ( cart.products[id] ) {
-        cart.products[id].quantity = cart.products[id].quantity + 1;
-      } else {
-        cart.products[id] = {
-          id,
-          quantity: 1
-        }
-      }
-
-        return cartState;
-
-    })
-  }
-
-  // function checkout() {
-  //   initiateCheckout({
-  //     lineItems: cartItems.map(({ id, quantity }) => {
-  //       return {
-  //         price: id,
-  //         quantity
-  //       }
-  //     })
-  //   })
-  // }
-
+  const { addToCart } = useCart();
 
   return (
     <div className="flex flex-col bg-red-50 justify-center min-h-screen">
@@ -69,8 +18,6 @@ export default function Home() {
         <title>Books</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      {/* <Header /> */}
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center pb-16">
         <h1 className="text-6xl font-recoleta font-regular">
@@ -88,21 +35,10 @@ export default function Home() {
           </code>.
         </p>
 
-        <p className="">
-
-          {/* <strong>Items:</strong> 
-          {quantity}
-          <br />
-          <strong>Total:</strong> 
-          ${subtotal} */}
-
-          <br />
-          {/* <button className="" onClick={checkout}>Check Out</button> */}
-        </p>
-
-
         {products.map(product => {
+
           const { id, title, image, category, price } = product;
+          
           return (
 
             <div className="flex flex-wrap items-center justify-center pt-10">
@@ -126,7 +62,7 @@ export default function Home() {
                       {product[0].title}
                     </span>
                     <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product[0].id})}>
-                    {product[0].price}
+                    {product[0].price} €
                     </button>
                   </div>
                 </div>
@@ -148,7 +84,7 @@ export default function Home() {
                       {product[1].title}
                     </span>
                     <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[1].id })}>
-                      {product[1].price}€
+                      {product[1].price} €
                     </button>
                   </div>
                 </div>
@@ -170,7 +106,7 @@ export default function Home() {
                       {product[2].title}
                     </span>
                     <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[2].id })}>
-                      {product[2].price}€
+                      {product[2].price} €
                     </button>
                   </div>
                 </div>

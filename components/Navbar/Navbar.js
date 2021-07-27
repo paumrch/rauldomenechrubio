@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { useCart } from '../../hooks/use-cart.js';
+import { FaShoppingCart } from 'react-icons/fa';
 
 export const Navbar = () => {
   const [active, setActive] = useState(false)
@@ -7,6 +9,8 @@ export const Navbar = () => {
   const handleClick = () => {
     setActive(!active)
   }
+
+  const { subtotal, checkout } = useCart();
 
   return (
       <nav className='flex items-center flex-wrap bg-red-50 p-8 pb-24'>
@@ -62,8 +66,15 @@ export const Navbar = () => {
                 Contact us
               </a>
             </Link>
+            <div>
+        <button className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-red-400 font-recoleta font-regular items-center justify-center hover:bg-red-50 hover:text-red-500' onClick={checkout}>
+          <FaShoppingCart /> {subtotal} €
+        </button>
+      </div>
           </div>
         </div>
       </nav>
   )
 }
+
+export default Navbar;
