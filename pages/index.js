@@ -35,87 +35,51 @@ export default function Home() {
           </code>.
         </p>
 
-        {products.map(product => {
+        <div className="flex flex-wrap items-center justify-center pt-10">
+          {products.map((product, index) => {
+            const { id, title, image, category, price } = product;
 
-          const { id, title, image, category, price } = product;
-          
-          return (
+            let backgroundColor;
+            switch (index) {
+              case 0:
+                backgroundColor = 'bg-red-200';
+                break;
+              case 1:
+                backgroundColor = 'bg-red-400';
+                break;
+              case 2:
+                backgroundColor = 'bg-red-300';
+                break;
+            }
 
-            <div className="flex flex-wrap items-center justify-center pt-10">
-              
-              <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
+            return (
+              <div className={`flex-shrink-0 mx-2 mb-6 relative overflow-hidden rounded-lg max-w-xs shadow-lg ${backgroundColor}`}>
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
                   <picture>
                     <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
                     <source srcSet="/images/harrypotter1.jpeg" />
-                    <img className="relative w-40" src={product[0].image} alt="shopping item" />
+                    <img className="relative w-40" src={product.image} alt="shopping item" />
                   </picture>
                 </div>
                 <div className="relative text-white px-6 pb-6 mt-6">
                   <span className="block opacity-75 -mb-1">
-                    {product[0].category}
+                    {product.category}
                   </span>
                   <div className="flex justify-between">
                     <span className="block font-recoleta font-regular text-xl">
-                      {product[0].title}
+                      {product.title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product[0].id})}>
-                    {product[0].price} €
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product.id})}>
+                    {product.price} €
                     </button>
                   </div>
                 </div>
               </div>
-              
-              
-              <div className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
-                <div className="relative pt-10 px-10 flex items-center justify-center">
-                  <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
-                  </div>
-                  <img className="relative w-40" src={product[1].image} alt="shopping" />
-                </div>
-                <div className="relative text-white px-6 pb-6 mt-6">
-                  <span className="block opacity-75 -mb-1">
-                    {product[1].category}
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="block font-recoleta font-regular text-xl">
-                      {product[1].title}
-                    </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[1].id })}>
-                      {product[1].price} €
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-red-300 rounded-lg max-w-xs shadow-lg">
-                <div className="relative pt-10 px-10 flex items-center justify-center">
-                  <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
-                  </div>
-                  <img className="relative w-40" src={product[2].image} alt="shopping" />
-                </div>
-
-                <div className="relative text-white px-6 pb-6 mt-6">
-                  <span className="block opacity-75 -mb-1">
-                    {product[2].category}
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="block font-recoleta font-regular text-xl">
-                      {product[2].title}
-                    </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({ id: product[2].id })}>
-                      {product[2].price} €
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-
-          )
-        })}
+            )
+          })}
+        </div>
       </main>
 
       <Footer />
