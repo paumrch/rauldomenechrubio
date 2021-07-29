@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useCart } from '../../hooks/use-cart.js';
 import { FaShoppingCart } from 'react-icons/fa';
 
-export const Navbar = () => {
+export const Nav = () => {
   const [active, setActive] = useState(false)
 
   const handleClick = () => {
@@ -68,7 +68,7 @@ export const Navbar = () => {
             </Link>
             <div>
         <button className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-red-400 font-recoleta font-regular items-center justify-center hover:bg-red-50 hover:text-red-500' onClick={checkout}>
-          <FaShoppingCart /> {subtotal} €
+          <FaShoppingCart /> € {subtotal}
         </button>
       </div>
           </div>
@@ -77,4 +77,4 @@ export const Navbar = () => {
   )
 }
 
-export default Navbar;
+export default Nav;

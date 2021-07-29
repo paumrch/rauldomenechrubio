@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext, useContext, useEffect } from 'react';
 
 import products from '../products.json';
 
@@ -13,6 +13,20 @@ export const CartContext = createContext();
 export function useCartState() {
 
     const [cart, updateCart] = useState(defaultCart);
+
+    useEffect(() => {
+        const stateFromStorage = window.localStorage.getItem('cremona_cart');
+        const data = stateFromStorage && JSON.parse(stateFromStorage);
+        if ( data ) {
+            updateCart(data);
+        }
+    }, [])
+
+    useEffect(() => {
+        const data = JSON.stringify(cart);
+        window.localStorage.setItem('cremona_cart', data)
+
+    }, [cart])
 
     const cartItems = Object.keys(cart.products).map(id => {
         const product = products.flat().find(e => e.id === id)
@@ -49,7 +63,7 @@ export function useCartState() {
             return cartState;
     
         })
-      }
+      };
     
       function checkout() {
         initiateCheckout({

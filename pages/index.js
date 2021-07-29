@@ -2,8 +2,10 @@ import Head from 'next/head'
 import Footer from './footer'
 import products from '../products.json';
 import { useState } from 'react';
-import { useCart } from '../hooks/use-cart';
-import Stripe from '@stripe/stripe-js';
+import  {useCart}  from '../hooks/use-cart';
+import Link from 'next/link';
+
+ 
 
 
 
@@ -42,7 +44,7 @@ export default function Home() {
           return (
 
             <div className="flex flex-wrap items-center justify-center pt-10">
-              
+              {/* <Link href={`/products/${id}`}> */}
               <div className="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-red-200 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
@@ -57,17 +59,22 @@ export default function Home() {
                   <span className="block opacity-75 -mb-1">
                     {product[0].category}
                   </span>
+                  
                   <div className="flex justify-between">
+                  
                     <span className="block font-recoleta font-regular text-xl">
                       {product[0].title}
                     </span>
                     <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product[0].id})}>
                     {product[0].price} €
                     </button>
+                    
                   </div>
+                  
                 </div>
+               
               </div>
-              
+              {/* </Link> */}
               
               <div className="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-red-400 rounded-lg max-w-xs shadow-lg">
                 <div className="relative pt-10 px-10 flex items-center justify-center">
