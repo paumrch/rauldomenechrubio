@@ -16,7 +16,7 @@ export const Navbar = () => {
       <nav className='flex items-center flex-wrap bg-red-50 p-8 pb-24'>
         <Link href='/'>
         <a className="flex-shrink-0 font-recoleta text-red-400 text-2xl" href="/">
-                        Cremona
+                        Hola María
                        
                     </a>
         </Link>
@@ -67,9 +67,11 @@ export const Navbar = () => {
               </a>
             </Link>
             <div>
-        <button className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-red-400 font-recoleta font-regular items-center justify-center hover:bg-red-50 hover:text-red-500' onClick={checkout}>
+            <Link href='/cart'>
+        <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-red-400 font-recoleta font-regular items-center justify-center hover:bg-red-50 hover:text-red-500'>
           <FaShoppingCart /> {subtotal} €
-        </button>
+        </a>
+        </Link>
       </div>
           </div>
         </div>

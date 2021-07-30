@@ -1,13 +1,8 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar/Navbar';
 import Footer from './footer'
 import products from '../products.json';
-import { useState } from 'react';
 import { useCart } from '../hooks/use-cart';
-import Stripe from '@stripe/stripe-js';
-
-
-
+import Link from 'next';
 
 export default function Home() {
 
@@ -59,8 +54,8 @@ export default function Home() {
                   <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
                   </div>
                   <picture>
-                    <source srcSet="/images/harrypotter1.jpeg" type="image/jpeg" />
-                    <source srcSet="/images/harrypotter1.jpeg" />
+                    <source srcSet={product.image} type="image/jpeg" />
+                    <source srcSet={product.image} />
                     <img className="relative w-40" src={product.image} alt="shopping item" />
                   </picture>
                 </div>
@@ -72,7 +67,11 @@ export default function Home() {
                     <span className="block font-recoleta font-regular text-xl">
                       {product.title}
                     </span>
-                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" onClick={() => addToCart({id: product.id})}>
+                    <button className="bg-white rounded-full text-red-300 text-xs font-bold px-2 py-2 leading-none flex items-center hover:text-red-400" 
+                    onClick={() => {
+   
+                      return addToCart({ id });
+                    }}>
                     {product.price} €
                     </button>
                   </div>

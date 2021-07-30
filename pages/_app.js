@@ -5,8 +5,9 @@ import { Navbar } from '../components/Navbar/Navbar';
 
 function MyApp({ Component, pageProps }) {
   const cart = useCartState();
+  console.log(cart);
   return (
-  <CartContext.Provider value ={{cart}}>
+  <CartContext.Provider value={cart}>
      <Navbar />
   <Component {...pageProps} />
   </CartContext.Provider>
